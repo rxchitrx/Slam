@@ -19,6 +19,7 @@
 		9EE7F1A62488DCFB084C20D3 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D49A99EAC2802C59242A01 /* AppModel.swift */; };
 		BF35B6E5BCBA2587BA035B2C /* RoomCaptureViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18226DAE8D598C38EE92854A /* RoomCaptureViewContainer.swift */; };
 		CA970390A147333AC9A639D3 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BD4237AF2B6DE6990DB63 /* AppEnvironment.swift */; };
+		D531D6839CC723D28B7EAB33 /* CompletionHeuristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B43F2D488181C41684992 /* CompletionHeuristic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		287C81872B00F22260E381C0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		44D49A99EAC2802C59242A01 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		4DBECBC678C83B9990290A7D /* SlamAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlamAppApp.swift; sourceTree = "<group>"; };
+		4F8B43F2D488181C41684992 /* CompletionHeuristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionHeuristic.swift; sourceTree = "<group>"; };
 		71108407641043F98DBD7229 /* SlamAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlamAppTests.swift; sourceTree = "<group>"; };
 		8C9BD4237AF2B6DE6990DB63 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		8D9C26928E541AEDB64B6301 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		9B79FE3452C2813AB256462D /* Scanning */ = {
 			isa = PBXGroup;
 			children = (
+				4F8B43F2D488181C41684992 /* CompletionHeuristic.swift */,
 				E69B53EC1162D50E6D9565B3 /* RoomScannerService.swift */,
 			);
 			path = Scanning;
@@ -255,6 +258,7 @@
 			files = (
 				CA970390A147333AC9A639D3 /* AppEnvironment.swift in Sources */,
 				9EE7F1A62488DCFB084C20D3 /* AppModel.swift in Sources */,
+				D531D6839CC723D28B7EAB33 /* CompletionHeuristic.swift in Sources */,
 				2F174515A99A3A5A1681469E /* DefaultScanExporter.swift in Sources */,
 				814A0349F5E93571D7550713 /* FileLatestScanStore.swift in Sources */,
 				51206A228388718315F5153D /* HomeView.swift in Sources */,

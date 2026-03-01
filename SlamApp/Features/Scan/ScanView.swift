@@ -16,6 +16,9 @@ struct ScanView: View {
 
                 VStack {
                     statusCard
+                    if scanner.scanState == .scanning && scanner.completionAssessment.shouldSuggestComplete {
+                        suggestionBanner
+                    }
                     Spacer()
                     instructionCard
                     controls
@@ -98,6 +101,19 @@ struct ScanView: View {
             .disabled(scanner.scanState != .scanning)
         }
         .padding(.top, 4)
+    }
+
+    private var suggestionBanner: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "checkmark.seal.fill")
+                .foregroundStyle(.green)
+            Text("Coverage looks good. You can stop scanning now.")
+                .font(.subheadline.weight(.medium))
+            Spacer()
+        }
+        .padding(12)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 
     private func startScan() {

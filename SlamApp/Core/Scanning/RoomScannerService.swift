@@ -10,6 +10,7 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
     @Published private(set) var scanState: ScanState = .idle
     @Published private(set) var currentTelemetry: ScanTelemetry = .empty
     @Published private(set) var latestInstructionMessage: String = "Move steadily around the room."
+    @Published private(set) var completionAssessment: CompletionAssessment = .empty
 
     lazy var captureView: RoomCaptureView = {
         let view = RoomCaptureView(frame: .zero)
@@ -30,6 +31,7 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
 
     private var startDate: Date?
     private var stopContinuation: CheckedContinuation<ScanArtifact, Error>?
+    private var completionHeuristic = CompletionHeuristic()
 
     func start() throws {
         guard RoomCaptureSession.isSupported else {
@@ -48,6 +50,8 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
         scanState = .preparing
         currentTelemetry = .empty
         latestInstructionMessage = Self.instructionMessage(for: .normal)
+        completionAssessment = .empty
+        completionHeuristic.reset()
         startDate = Date()
 
         var configuration = RoomCaptureSession.Configuration()
@@ -92,10 +96,18 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
         }
     }
 
-    private func updateTelemetry(wallCount: Int, trackingState: TrackingState) {
+    private func handleRoomUpdate(room: CapturedRoom, trackingState: TrackingState) {
         let elapsed = elapsedSeconds()
+        let wallCount = room.walls.count
+        let estimatedDimensions = estimateRoomDimensions(from: room)
+        let heuristicResult = completionHeuristic.evaluate(
+            wallCount: wallCount,
+            estimatedDimensions: estimatedDimensions,
+            trackingState: trackingState,
+            elapsedSeconds: elapsed
+        )
         let coverage = min(Double(wallCount) / 4.0, 1.0)
-        let confidence = min(1, max(0, trackingState.score * 0.65 + coverage * 0.35))
+        let confidence = min(1, max(0, trackingState.score * 0.5 + coverage * 0.3 + heuristicResult.stabilityScore * 0.2))
 
         currentTelemetry = ScanTelemetry(
             trackingState: trackingState,
@@ -103,6 +115,7 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
             confidence: confidence,
             elapsedSeconds: elapsed
         )
+        completionAssessment = heuristicResult.assessment
     }
 
     private func handleEnd(data: CapturedRoomData, error: Error?) async {
@@ -199,10 +212,9 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
 
 extension RoomScannerService: RoomCaptureSessionDelegate {
     nonisolated func captureSession(_ session: RoomCaptureSession, didUpdate room: CapturedRoom) {
-        let wallCount = room.walls.count
         let trackingState = Self.mapTrackingState(session.arSession.currentFrame?.camera.trackingState)
         Task { @MainActor in
-            self.updateTelemetry(wallCount: wallCount, trackingState: trackingState)
+            self.handleRoomUpdate(room: room, trackingState: trackingState)
         }
     }
 
