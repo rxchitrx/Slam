@@ -14,7 +14,10 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
 
     lazy var captureView: RoomCaptureView = {
         let view = RoomCaptureView(frame: .zero)
-        view.isModelEnabled = true
+        // On some iOS 26.x + Xcode 26 debug runs, live model rendering can trigger
+        // a Metal validation crash in RealityKit. Keep capture stable by disabling
+        // the live model overlay during scanning.
+        view.isModelEnabled = false
         view.captureSession.delegate = self
         return view
     }()
@@ -27,11 +30,20 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
         $currentTelemetry.eraseToAnyPublisher()
     }
 
-    private let fileManager = FileManager.default
-
     private var startDate: Date?
     private var stopContinuation: CheckedContinuation<ScanArtifact, Error>?
     private var completionHeuristic = CompletionHeuristic()
+    private let telemetryGateLock = NSLock()
+    private nonisolated(unsafe) var lastTelemetryDispatchTime: TimeInterval = 0
+
+    func cancelIfNeeded() {
+        guard scanState == .scanning || scanState == .stopping else {
+            return
+        }
+
+        captureView.captureSession.stop()
+        scanState = .idle
+    }
 
     func start() throws {
         guard RoomCaptureSession.isSupported else {
@@ -99,7 +111,7 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
     private func handleRoomUpdate(room: CapturedRoom, trackingState: TrackingState) {
         let elapsed = elapsedSeconds()
         let wallCount = room.walls.count
-        let estimatedDimensions = estimateRoomDimensions(from: room)
+        let estimatedDimensions = Self.estimateRoomDimensions(from: room)
         let heuristicResult = completionHeuristic.evaluate(
             wallCount: wallCount,
             estimatedDimensions: estimatedDimensions,
@@ -124,17 +136,36 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
             return
         }
 
+        let durationSeconds = elapsedSeconds()
+        let confidence = currentTelemetry.confidence
+        let result = await Task.detached(priority: .userInitiated) {
+            await Self.makeArtifactResult(from: data, durationSeconds: durationSeconds, confidence: confidence)
+        }.value
+
+        finishStop(with: result)
+    }
+
+    nonisolated private static func makeArtifactResult(
+        from data: CapturedRoomData,
+        durationSeconds: Int,
+        confidence: Double
+    ) async -> Result<ScanArtifact, ScanError> {
         do {
             let roomBuilder = RoomBuilder(options: [.beautifyObjects])
             let room = try await roomBuilder.capturedRoom(from: data)
-            let artifact = try makeArtifact(from: room)
-            finishStop(with: .success(artifact))
+            let artifact = try makeArtifact(from: room, durationSeconds: durationSeconds, confidence: confidence)
+            return .success(artifact)
         } catch {
-            finishStop(with: .failure(.processingFailed(error.localizedDescription)))
+            return .failure(.processingFailed(error.localizedDescription))
         }
     }
 
-    private func makeArtifact(from room: CapturedRoom) throws -> ScanArtifact {
+    nonisolated private static func makeArtifact(
+        from room: CapturedRoom,
+        durationSeconds: Int,
+        confidence: Double
+    ) throws -> ScanArtifact {
+        let fileManager = FileManager.default
         let outputDirectory = fileManager.temporaryDirectory.appendingPathComponent("SlamScans", isDirectory: true)
         try fileManager.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
 
@@ -150,14 +181,14 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
             wallCount: room.walls.count,
             openingCount: room.openings.count,
             objectCount: room.objects.count,
-            durationSeconds: elapsedSeconds(),
-            confidence: currentTelemetry.confidence
+            durationSeconds: durationSeconds,
+            confidence: confidence
         )
 
         return ScanArtifact(usdzURL: usdzURL, metadata: metadata, createdAt: Date())
     }
 
-    private func estimateRoomDimensions(from room: CapturedRoom) -> SIMD3<Float>? {
+    nonisolated private static func estimateRoomDimensions(from room: CapturedRoom) -> SIMD3<Float>? {
         guard let floor = room.floors.first else {
             return nil
         }
@@ -212,6 +243,18 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
 
 extension RoomScannerService: RoomCaptureSessionDelegate {
     nonisolated func captureSession(_ session: RoomCaptureSession, didUpdate room: CapturedRoom) {
+        let now = ProcessInfo.processInfo.systemUptime
+        telemetryGateLock.lock()
+        let shouldDispatch = now - lastTelemetryDispatchTime >= 0.2
+        if shouldDispatch {
+            lastTelemetryDispatchTime = now
+        }
+        telemetryGateLock.unlock()
+
+        guard shouldDispatch else {
+            return
+        }
+
         let trackingState = Self.mapTrackingState(session.arSession.currentFrame?.camera.trackingState)
         Task { @MainActor in
             self.handleRoomUpdate(room: room, trackingState: trackingState)

@@ -5,13 +5,14 @@ options:
 settings:
   base:
     PRODUCT_BUNDLE_IDENTIFIER: com.rachit.slam
+    DEVELOPMENT_TEAM: Q35CVW872L
     IPHONEOS_DEPLOYMENT_TARGET: 17.0
     SWIFT_VERSION: 6.0
     SWIFT_STRICT_CONCURRENCY: minimal
     GENERATE_INFOPLIST_FILE: YES
     INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
     INFOPLIST_KEY_UILaunchScreen_Generation: YES
-    INFOPLIST_KEY_NSMainCameraUsageDescription: Slam needs camera and LiDAR to scan your room locally on this device.
+    INFOPLIST_KEY_NSCameraUsageDescription: Slam needs camera and LiDAR to scan your room locally on this device.
     CODE_SIGN_STYLE: Automatic
 configs:
   Debug: debug

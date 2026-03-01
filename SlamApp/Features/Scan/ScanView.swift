@@ -46,6 +46,9 @@ struct ScanView: View {
             } message: {
                 Text(errorMessage ?? "Unknown error")
             }
+            .onDisappear {
+                scanner.cancelIfNeeded()
+            }
         }
     }
 
