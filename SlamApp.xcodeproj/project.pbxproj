@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		079E8FA0853B011230D8D374 /* SlamAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBECBC678C83B9990290A7D /* SlamAppApp.swift */; };
+		2F174515A99A3A5A1681469E /* DefaultScanExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171156AAF4D605DB47369527 /* DefaultScanExporter.swift */; };
+		4DB0E437DC09FC323EA1C9EB /* SlamAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71108407641043F98DBD7229 /* SlamAppTests.swift */; };
+		507E2E565C783FBAB38C0F77 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C26928E541AEDB64B6301 /* ScanView.swift */; };
+		51206A228388718315F5153D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287C81872B00F22260E381C0 /* HomeView.swift */; };
+		6BEA0526E6BC91A0BF3A4BED /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FBCD40B124F85A7367DBD /* PreviewView.swift */; };
+		814A0349F5E93571D7550713 /* FileLatestScanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0597D80C22E74417033109C8 /* FileLatestScanStore.swift */; };
+		93F3BD5FABA91C42CB6D9AF6 /* ScanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2250B883FF62686A658F51 /* ScanModels.swift */; };
+		9EE7F1A62488DCFB084C20D3 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D49A99EAC2802C59242A01 /* AppModel.swift */; };
+		CA970390A147333AC9A639D3 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BD4237AF2B6DE6990DB63 /* AppEnvironment.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C008F3D1A2FD89B8163B938E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37CA3F26C70543D686306535 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09EE4F339BFDC52A81641E9D;
+			remoteInfo = SlamApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0597D80C22E74417033109C8 /* FileLatestScanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLatestScanStore.swift; sourceTree = "<group>"; };
+		0F4F01324F35B3D1F5DAFA41 /* SlamAppTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SlamAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		171156AAF4D605DB47369527 /* DefaultScanExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScanExporter.swift; sourceTree = "<group>"; };
+		1B2250B883FF62686A658F51 /* ScanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModels.swift; sourceTree = "<group>"; };
+		287C81872B00F22260E381C0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		44D49A99EAC2802C59242A01 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4DBECBC678C83B9990290A7D /* SlamAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlamAppApp.swift; sourceTree = "<group>"; };
+		71108407641043F98DBD7229 /* SlamAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlamAppTests.swift; sourceTree = "<group>"; };
+		8C9BD4237AF2B6DE6990DB63 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		8D9C26928E541AEDB64B6301 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		ECF37906CD70114FF6B9F568 /* SlamApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SlamApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F09FBCD40B124F85A7367DBD /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		08753CB3953FE34DED53E264 /* SlamAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				71108407641043F98DBD7229 /* SlamAppTests.swift */,
+			);
+			path = SlamAppTests;
+			sourceTree = "<group>";
+		};
+		0899B56B40E7310FBCF24876 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECF37906CD70114FF6B9F568 /* SlamApp.app */,
+				0F4F01324F35B3D1F5DAFA41 /* SlamAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D0161D94DEF48ACCB202126 /* SlamApp */ = {
+			isa = PBXGroup;
+			children = (
+				A5694A8E4460551AA131B9C3 /* App */,
+				CD521FD097F1C6E3420BB17C /* Core */,
+				B3F92A04DAE7DE774AB66571 /* Features */,
+			);
+			path = SlamApp;
+			sourceTree = "<group>";
+		};
+		38E6A5ABF26AE27CA86FAF58 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B2250B883FF62686A658F51 /* ScanModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44CB16233D4774133157FA60 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				171156AAF4D605DB47369527 /* DefaultScanExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		45B7243D976A181AC72375B1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				287C81872B00F22260E381C0 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A5694A8E4460551AA131B9C3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8C9BD4237AF2B6DE6990DB63 /* AppEnvironment.swift */,
+				44D49A99EAC2802C59242A01 /* AppModel.swift */,
+				4DBECBC678C83B9990290A7D /* SlamAppApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AAEEBF6410E5ADC6493BD02C /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C26928E541AEDB64B6301 /* ScanView.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		B3F92A04DAE7DE774AB66571 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				45B7243D976A181AC72375B1 /* Home */,
+				E500ABD5DC9748C6BE4656B7 /* Preview */,
+				AAEEBF6410E5ADC6493BD02C /* Scan */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C2DD40EE1046E8A5203CE29D = {
+			isa = PBXGroup;
+			children = (
+				0D0161D94DEF48ACCB202126 /* SlamApp */,
+				08753CB3953FE34DED53E264 /* SlamAppTests */,
+				0899B56B40E7310FBCF24876 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD521FD097F1C6E3420BB17C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				44CB16233D4774133157FA60 /* Export */,
+				38E6A5ABF26AE27CA86FAF58 /* Models */,
+				FE51C961C86D99834848FD7A /* Persistence */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E500ABD5DC9748C6BE4656B7 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				F09FBCD40B124F85A7367DBD /* PreviewView.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		FE51C961C86D99834848FD7A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0597D80C22E74417033109C8 /* FileLatestScanStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		09EE4F339BFDC52A81641E9D /* SlamApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74595E4FF9572D540B081FE2 /* Build configuration list for PBXNativeTarget "SlamApp" */;
+			buildPhases = (
+				229BA02A82E026FFA206AAA7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SlamApp;
+			packageProductDependencies = (
+			);
+			productName = SlamApp;
+			productReference = ECF37906CD70114FF6B9F568 /* SlamApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2B4E10A8E94ED75A514520E8 /* SlamAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AD3F3333E05EE51C3C1A089 /* Build configuration list for PBXNativeTarget "SlamAppTests" */;
+			buildPhases = (
+				8BF3954A77A62FECF3CDFF00 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB8AC750128FCAF4F50879DC /* PBXTargetDependency */,
+			);
+			name = SlamAppTests;
+			packageProductDependencies = (
+			);
+			productName = SlamAppTests;
+			productReference = 0F4F01324F35B3D1F5DAFA41 /* SlamAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37CA3F26C70543D686306535 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					09EE4F339BFDC52A81641E9D = {
+						ProvisioningStyle = Automatic;
+					};
+					2B4E10A8E94ED75A514520E8 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 085F3B5A231A71318F5F0BC5 /* Build configuration list for PBXProject "SlamApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C2DD40EE1046E8A5203CE29D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				09EE4F339BFDC52A81641E9D /* SlamApp */,
+				2B4E10A8E94ED75A514520E8 /* SlamAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		229BA02A82E026FFA206AAA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA970390A147333AC9A639D3 /* AppEnvironment.swift in Sources */,
+				9EE7F1A62488DCFB084C20D3 /* AppModel.swift in Sources */,
+				2F174515A99A3A5A1681469E /* DefaultScanExporter.swift in Sources */,
+				814A0349F5E93571D7550713 /* FileLatestScanStore.swift in Sources */,
+				51206A228388718315F5153D /* HomeView.swift in Sources */,
+				6BEA0526E6BC91A0BF3A4BED /* PreviewView.swift in Sources */,
+				93F3BD5FABA91C42CB6D9AF6 /* ScanModels.swift in Sources */,
+				507E2E565C783FBAB38C0F77 /* ScanView.swift in Sources */,
+				079E8FA0853B011230D8D374 /* SlamAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BF3954A77A62FECF3CDFF00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DB0E437DC09FC323EA1C9EB /* SlamAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB8AC750128FCAF4F50879DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09EE4F339BFDC52A81641E9D /* SlamApp */;
+			targetProxy = C008F3D1A2FD89B8163B938E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		13E913519A14448E30D46BA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMainCameraUsageDescription = "Slam needs camera and LiDAR to scan your room locally on this device.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachit.slam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		28E4A5B67E4EF2E720DD385D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachit.slam.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlamApp.app/SlamApp";
+			};
+			name = Debug;
+		};
+		37D72AD78A461E5DBBC1E0DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachit.slam.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlamApp.app/SlamApp";
+			};
+			name = Release;
+		};
+		771829BED77EE86C3F922CF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = SlamApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A03184438C96FBD3D2FD5893 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = SlamApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3E01830701D873E916AF144 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMainCameraUsageDescription = "Slam needs camera and LiDAR to scan your room locally on this device.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachit.slam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		085F3B5A231A71318F5F0BC5 /* Build configuration list for PBXProject "SlamApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3E01830701D873E916AF144 /* Debug */,
+				13E913519A14448E30D46BA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1AD3F3333E05EE51C3C1A089 /* Build configuration list for PBXNativeTarget "SlamAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E4A5B67E4EF2E720DD385D /* Debug */,
+				37D72AD78A461E5DBBC1E0DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		74595E4FF9572D540B081FE2 /* Build configuration list for PBXNativeTarget "SlamApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A03184438C96FBD3D2FD5893 /* Debug */,
+				771829BED77EE86C3F922CF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37CA3F26C70543D686306535 /* Project object */;
+}

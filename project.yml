@@ -1,0 +1,40 @@
+name: SlamApp
+options:
+  minimumXcodeGenVersion: 2.37.0
+  developmentLanguage: en
+settings:
+  base:
+    PRODUCT_BUNDLE_IDENTIFIER: com.rachit.slam
+    IPHONEOS_DEPLOYMENT_TARGET: 17.0
+    SWIFT_VERSION: 6.0
+    SWIFT_STRICT_CONCURRENCY: minimal
+    GENERATE_INFOPLIST_FILE: YES
+    INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+    INFOPLIST_KEY_UILaunchScreen_Generation: YES
+    INFOPLIST_KEY_NSMainCameraUsageDescription: Slam needs camera and LiDAR to scan your room locally on this device.
+    CODE_SIGN_STYLE: Automatic
+configs:
+  Debug: debug
+  Release: release
+targets:
+  SlamApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - SlamApp
+    settings:
+      base:
+        PRODUCT_NAME: SlamApp
+  SlamAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - SlamAppTests
+    dependencies:
+      - target: SlamApp
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.rachit.slam.tests
