@@ -88,6 +88,7 @@ struct ScanArtifact: Equatable, Sendable {
     var createdAt: Date
 }
 
+@MainActor
 protocol RoomScanning: AnyObject {
     func start() throws
     func stop() async throws -> ScanArtifact
