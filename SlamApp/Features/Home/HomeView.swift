@@ -50,7 +50,12 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showPreview) {
                 if let artifact = appModel.latestScan {
-                    PreviewView(artifact: artifact)
+                    PreviewView(
+                        artifact: artifact,
+                        exportAction: { scan in
+                            try appModel.makeExportURL(for: scan)
+                        }
+                    )
                 } else {
                     Text("No saved scan found.")
                 }
