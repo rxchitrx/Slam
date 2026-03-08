@@ -43,7 +43,11 @@ final class AppModel: ObservableObject {
         }
     }
 
-    func makeExportURL(for artifact: ScanArtifact) throws -> URL {
-        try scanExporter.makeShareableCopy(from: artifact)
+    func makeUSDZExportURL(for artifact: ScanArtifact) throws -> URL {
+        try scanExporter.makeUSDZShareableCopy(from: artifact)
+    }
+
+    func makeFloorPlanPDFURL(for artifact: ScanArtifact) throws -> URL {
+        try scanExporter.makeFloorPlanPDF(from: artifact)
     }
 }

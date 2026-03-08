@@ -176,13 +176,16 @@ final class RoomScannerService: NSObject, ObservableObject, RoomScanning {
             throw ScanError.exportFailed(error.localizedDescription)
         }
 
+        let floorPlan = try? FloorPlanBuilder().build(from: room)
+
         let metadata = ScanMetadata(
             roomDimensions: estimateRoomDimensions(from: room),
             wallCount: room.walls.count,
             openingCount: room.openings.count,
             objectCount: room.objects.count,
             durationSeconds: durationSeconds,
-            confidence: confidence
+            confidence: confidence,
+            floorPlan: floorPlan
         )
 
         return ScanArtifact(usdzURL: usdzURL, metadata: metadata, createdAt: Date())

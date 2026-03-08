@@ -52,8 +52,11 @@ struct HomeView: View {
                 if let artifact = appModel.latestScan {
                     PreviewView(
                         artifact: artifact,
-                        exportAction: { scan in
-                            try appModel.makeExportURL(for: scan)
+                        exportUSDZAction: { scan in
+                            try appModel.makeUSDZExportURL(for: scan)
+                        },
+                        exportPDFAction: { scan in
+                            try appModel.makeFloorPlanPDFURL(for: scan)
                         }
                     )
                 } else {

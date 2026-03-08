@@ -80,6 +80,7 @@ struct ScanMetadata: Codable, Equatable, Sendable {
     var objectCount: Int
     var durationSeconds: Int
     var confidence: Double
+    var floorPlan: FloorPlanData?
 }
 
 struct ScanArtifact: Equatable, Sendable {
@@ -104,5 +105,122 @@ protocol LatestScanStore {
 }
 
 protocol ScanExporter {
-    func makeShareableCopy(from artifact: ScanArtifact) throws -> URL
+    func makeUSDZShareableCopy(from artifact: ScanArtifact) throws -> URL
+    func makeFloorPlanPDF(from artifact: ScanArtifact) throws -> URL
+}
+
+struct FloorPlanData: Codable, Equatable, Sendable {
+    var version: Int
+    var unit: String
+    var bounds: FloorPlanBounds
+    var walls: [FloorPlanWallSegment]
+    var openings: [FloorPlanOpening]
+    var objects: [FloorPlanObject]
+    var majorDimensions: [FloorPlanDimension]
+    var renderDefaults: FloorPlanRenderDefaults
+}
+
+struct FloorPlanBounds: Codable, Equatable, Sendable {
+    var minX: Float
+    var minZ: Float
+    var maxX: Float
+    var maxZ: Float
+}
+
+struct FloorPlanWallSegment: Codable, Equatable, Sendable, Identifiable {
+    var id: UUID
+    var startX: Float
+    var startZ: Float
+    var endX: Float
+    var endZ: Float
+    var lengthMeters: Float
+
+    var start: SIMD2<Float> {
+        SIMD2(startX, startZ)
+    }
+
+    var end: SIMD2<Float> {
+        SIMD2(endX, endZ)
+    }
+}
+
+struct FloorPlanOpening: Codable, Equatable, Sendable, Identifiable {
+    var id: UUID
+    var kind: FloorPlanOpeningKind
+    var centerX: Float
+    var centerZ: Float
+    var rotationRadians: Float
+    var widthMeters: Float
+    var depthMeters: Float
+    var hostWallID: UUID?
+
+    var center: SIMD2<Float> {
+        SIMD2(centerX, centerZ)
+    }
+}
+
+enum FloorPlanOpeningKind: String, Codable, Sendable {
+    case door
+    case window
+    case opening
+}
+
+struct FloorPlanObject: Codable, Equatable, Sendable, Identifiable {
+    var id: UUID
+    var kind: FloorPlanObjectKind
+    var label: String
+    var centerX: Float
+    var centerZ: Float
+    var sizeX: Float
+    var sizeZ: Float
+    var rotationRadians: Float
+
+    var center: SIMD2<Float> {
+        SIMD2(centerX, centerZ)
+    }
+
+    var size: SIMD2<Float> {
+        SIMD2(sizeX, sizeZ)
+    }
+}
+
+enum FloorPlanObjectKind: String, Codable, Sendable {
+    case storage
+    case bed
+    case chair
+    case sofa
+    case table
+    case cabinet
+    case appliance
+    case toilet
+    case sink
+    case bathtub
+    case refrigerator
+    case stove
+    case washerDryer
+    case television
+    case unknown
+}
+
+struct FloorPlanDimension: Codable, Equatable, Sendable, Identifiable {
+    var id: UUID
+    var startX: Float
+    var startZ: Float
+    var endX: Float
+    var endZ: Float
+    var text: String
+
+    var start: SIMD2<Float> {
+        SIMD2(startX, startZ)
+    }
+
+    var end: SIMD2<Float> {
+        SIMD2(endX, endZ)
+    }
+}
+
+struct FloorPlanRenderDefaults: Codable, Equatable, Sendable {
+    var preferredPaddingMeters: Float
+    var wallThicknessMeters: Float
+    var openingStrokeMeters: Float
 }
